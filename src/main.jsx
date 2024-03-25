@@ -12,8 +12,13 @@ import Pagina404 from './Components/PaginaError.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "/reactportafoli",
+    path: "/reactportafoli/",
     element: <App/>,
+    errorElement: <Pagina404/>,
+  },
+  {
+    path: "/reactportafoli/Personaje/",
+    element: <Pagina404/>,
     errorElement: <Pagina404/>,
   }
 ]);
