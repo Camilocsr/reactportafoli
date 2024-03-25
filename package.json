@@ -1,6 +1,7 @@
 {
   "name": "front",
   "private": true,
+  "homepage": "https://camilocsr.github.io/PortafolioReact/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
