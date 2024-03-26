@@ -1,47 +1,66 @@
 import React from "react";
+import axios from 'axios';
 
 const Contacto = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const nombre = document.getElementById('name');
-    const correo = document.getElementById('email');
-    const numero = document.getElementById('number-contac');
-    const whatsapp = document.getElementById("whatsapp");
-    const asunto = document.getElementById('asunto');
+    const nombre = document.getElementById('name').value;
+    const correo = document.getElementById('email').value;
+    let numero = document.getElementById('number-contac').value.toString();
+    let whatsapp = document.getElementById("whatsapp").value.toString();
+    const asunto = document.getElementById('asunto').value;
     const parrafo = document.getElementById('parrafo-formulario');
 
     let entrar = false;
     let texto = "";
     const validarEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,6})+$/;
 
-    if (nombre.value.length < 4) {
+    if (nombre.length < 4) {
       texto += `El nombre no es válido. <br>`;
       entrar = true;
-    } else if (!validarEmail.test(correo.value)) {
+    } else if (!validarEmail.test(correo)) {
       texto += `El email no es válido. <br>`;
       entrar = true;
-    } else if (numero.value.length < 10 || numero.value.length > 10) {
-      texto += `El número de celular no es válido. <br>`;
+    } else if (numero.length !== 10) {
+      texto += `El número de celular no es válido. Debe tener 10 dígitos. <br>`;
       entrar = true;
-    } else if (whatsapp.value.length < 10 || whatsapp.value.length > 10) {
-      texto += `El número de WhatsApp no es válido. <br>`;
+    } else if (whatsapp.length !== 10) {
+      texto += `El número de WhatsApp no es válido. Debe tener 10 dígitos. <br>`;
       entrar = true;
-    } else if (asunto.value.length < 10) {
+    } else if (asunto.length < 10) {
       texto += `El asunto debe tener al menos 10 caracteres. <br>`;
       entrar = true;
     } else {
-      // Si todo está bien, enviar el formulario
+      // Agregar prefijo "+57" a los números de teléfono
+      numero = "+57" + numero;
+      whatsapp = "+57" + whatsapp;
       entrar = true;
     }
 
     if (entrar) {
-      // Aquí puedes realizar cualquier acción adicional si lo necesitas
       parrafo.innerHTML = texto;
       
       if (texto === "") {
-        // Si no hay errores, enviar el formulario
-        event.target.submit();
+        const formData = {
+          name: nombre,
+          email: correo,
+          number: numero,
+          whatsapp: whatsapp,
+          asunto: asunto
+        };
+
+        // Enviar datos del formulario en una solicitud POST utilizando Axios
+        axios.post('http://3.144.250.142:80/InfoContacto', formData)
+          .then(response => {
+            console.log('Respuesta del servidor:', response.data);
+            console.log('Respuesta del servidor:', response.data);
+            let textoparrafo = response.data;
+            parrafo.innerHTML = textoparrafo;
+          })
+          .catch(error => {
+            console.error('Error al enviar formulario:', error);
+          });
       }
     }
   };
@@ -55,7 +74,7 @@ const Contacto = () => {
           </div>
         </div>
         <div className="contenedor-formulario col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-          <form className="wow animate__animated animate-delay-2s animate__rotateOut" onSubmit={handleSubmit} id="form" action="https://formsubmit.co/esmunred@gmail.com" method="POST">
+          <form className="wow animate__animated animate-delay-2s animate__rotateOut" onSubmit={handleSubmit} id="form">
             <div className="form">
               <h1 className="titulo-contacto">Contactar.</h1>
               <div className="grupo">

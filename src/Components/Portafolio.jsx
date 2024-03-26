@@ -29,11 +29,10 @@ const Portafolio = () => {
                 <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 contenedor-principal">
                     <div className="portafolio">
                         <div className="contenedor-imagen-proyectos">
-                            <a href="https://camilocsr.github.io/proyecto-sena-zozor/"><img className="imagen-blanco-y-negro-portafolio" src={Zozor} alt="proyecto llamado zozor el cual fue realizado por mi a peticion de un profesor del sena"/></a>
+                            <a href=""><img className="imagen-blanco-y-negro-portafolio" src={Zozor} alt="proyecto llamado zozor el cual fue realizado por mi a peticion de un profesor del sena"/></a>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
     )
