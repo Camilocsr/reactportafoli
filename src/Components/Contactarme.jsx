@@ -54,7 +54,6 @@ const Contacto = () => {
         axios.post('http://3.144.250.142:80/InfoContacto', formData)
           .then(response => {
             console.log('Respuesta del servidor:', response.data);
-            console.log('Respuesta del servidor:', response.data);
             let textoparrafo = response.data;
             parrafo.innerHTML = textoparrafo;
           })
