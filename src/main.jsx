@@ -8,6 +8,7 @@ import "./css/flexbox.css"
 import "./css/estilo.css"
 import 'animate.css/animate.css';
 import Pagina404 from './Components/PaginaError.jsx';
+import InfoContactos from './Components/CintactarmeServer.jsx';
 
 
 const router = createBrowserRouter([
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
     errorElement: <Pagina404/>,
   },
   {
-    path: "/reactportafoli/Personaje/",
-    element: <Pagina404/>,
+    path: "/reactportafoli/Contactos",
+    element: <InfoContactos/>,
     errorElement: <Pagina404/>,
   }
 ]);

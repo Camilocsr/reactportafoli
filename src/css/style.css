@@ -1271,4 +1271,56 @@ textarea:focus~.barra::before{
     width: 80%;
     height: 60vh;
   }
+
+  .card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden; /* Asegura que el gradiente se aplique correctamente */
+  }
   
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    overflow: hidden; /* Oculta el contenido que desborda */
+    max-height: 2.2em; /* Establece la altura máxima para mostrar solo dos líneas de texto */
+    transition: max-height 0.3s ease; /* Agrega una transición suave */
+  }
+  
+  .card:hover .card-text {
+    max-height: none; /* Muestra todo el contenido cuando se hace hover */
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  
+  .col {
+    padding: 0 15px;
+  }
+  
+  /* Gradiente para la sombra */
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* La mitad izquierda de la tarjeta */
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent); /* Gradiente desde la sombra hasta la transparencia */
+    z-index: 1; /* Asegura que el gradiente esté detrás del contenido de la tarjeta */
+  }  
