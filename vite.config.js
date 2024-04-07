@@ -4,6 +4,9 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 export default defineConfig({
   plugins: [reactRefresh()],
   base: "/reactportafoli/",
+  server: {
+    port: 80
+  },
   build: {
     assetsDir: "images",
     assetsInclude: ["**/*.glb"]
