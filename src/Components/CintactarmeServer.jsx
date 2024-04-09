@@ -8,7 +8,7 @@ const InfoContactos = () => {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
-    axios.get('http://3.144.250.142:80/FormulariosContactar')
+    axios.get('http://3.144.250.142:80/InfoContacto')
       .then(response => {
         setDatos(response.data);
       })

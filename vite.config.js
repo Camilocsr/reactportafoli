@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   base: "/reactportafoli/",
   server: {
-    port: 80
+    port: 9999
   },
   build: {
     assetsDir: "images",
